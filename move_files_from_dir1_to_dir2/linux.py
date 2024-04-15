@@ -1,25 +1,25 @@
 import os
 import shutil
 
-def move_files_to_downloads(desktop_path, downloads_path):
-    # Get list of files on the desktop
-    desktop_files = os.listdir(desktop_path)
+def move_files_to_destination(source_path, destination_path):
+    # Get list of files and folders on the source path (desktop)
+    source_items = os.listdir(source_path)
     
-    # Iterate through each file
-    for file_name in desktop_files:
-        # Construct full path of the file
-        file_path = os.path.join(desktop_path, file_name)
+    # Iterate through each item
+    for item_name in source_items:
+        # Construct full path of the item
+        item_path = os.path.join(source_path, item_name)
         
-        # Check if it's a file (not directory)
-        if os.path.isfile(file_path):
-            # Move the file to the Downloads directory
-            shutil.move(file_path, downloads_path)
-            print(f"Moved {file_name} to {downloads_path}")
+        # Move the item to the destination directory
+        shutil.move(item_path, destination_path)
+        print(f"Moved {item_name} to {destination_path}")
 
 if __name__ == "__main__":
-    # Desktop and Downloads paths
+    # Desktop path
     desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
-    downloads_path = os.path.join(os.path.expanduser("~"), "Downloads")
+
+    # Destination path for Linux
+    destination_path = os.path.join(os.path.expanduser("~"), "Downloads")
     
-    # Move files
-    move_files_to_downloads(desktop_path, downloads_path)
+    # Move files and folders
+    move_files_to_destination(desktop_path, destination_path)
